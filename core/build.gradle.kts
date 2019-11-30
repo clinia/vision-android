@@ -76,6 +76,7 @@ bintray {
     pkg.apply {
         desc = ""
         repo = "maven"
+        userOrg = System.getenv("BINTRAY_ORG")
         name = Library.packageName
         websiteUrl = "https://www.clinia.ca/"
         issueTrackerUrl =  "https://github.com/clinia/vision-android/issues"
