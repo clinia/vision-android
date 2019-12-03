@@ -1,12 +1,13 @@
 package ca.clinia.vision.core.geosearch
 
+import ca.clinia.search.model.search.BoundingBox
 import ca.clinia.vision.core.Callback
 
 public interface GeoSearchView<T> {
 
-    public var onInsideBoundingBoxChanged: Callback<String?>?
-    public var onInsideBoundingBoxSubmitted: Callback<String?>?
+    public var onInsideBoundingBoxChanged: Callback<BoundingBox?>?
+    public var onInsideBoundingBoxSubmitted: Callback<BoundingBox?>?
 
-    public fun setBoundingBox(text: String?, submitQuery: Boolean = false)
+    public fun setBoundingBox(boundingBox: BoundingBox?, submitQuery: Boolean = false)
     public fun setRecords(records: List<T>)
 }
