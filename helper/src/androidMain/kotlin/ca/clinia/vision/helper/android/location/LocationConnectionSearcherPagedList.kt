@@ -20,9 +20,7 @@ internal data class LocationConnectionSearcherPagedList<R, RP>(
     private val searchForPlaces: Callback<String?> = { query ->
         searcherPlaces.setQuery(query)
         debouncer.debounce(searcherPlaces) {
-            pagedList.forEach {
-                it.value?.dataSource?.invalidate()
-            }
+            searchPlacesAsync()
         }
     }
     private val searchOnSubmit: Callback<String?> = { location ->
