@@ -5,7 +5,7 @@ object Library: Dependency  {
 
     override val group = "ca.clinia"
     override val artifact = "vision"
-    override val version = "1.0.0-beta07"
+    override val version = "1.0.0-beta08"
 
     val packageName = "$group:$artifact-android"
 
