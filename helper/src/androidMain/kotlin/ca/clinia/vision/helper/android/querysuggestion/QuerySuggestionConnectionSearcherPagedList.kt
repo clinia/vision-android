@@ -20,9 +20,7 @@ internal data class QuerySuggestionConnectionSearcherPagedList<R, RQS>(
     private val searchForSuggestions: Callback<String?> = { query ->
         searcherQuerySuggestions.setQuery(query)
         debouncer.debounce(searcherQuerySuggestions) {
-            pagedList.forEach {
-                it.value?.dataSource?.invalidate()
-            }
+            searchQuerySuggestionsAsync()
         }
     }
     private val searchOnSubmit: Callback<String?> = { query ->
