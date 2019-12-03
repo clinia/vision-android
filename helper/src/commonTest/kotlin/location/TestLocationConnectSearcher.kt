@@ -1,15 +1,15 @@
-package locationautocomplete
+package location
 
 import blocking
-import ca.clinia.vision.core.locationautocomplete.LocationAutoCompleteViewModel
+import ca.clinia.vision.core.location.LocationBoxViewModel
 import ca.clinia.vision.core.searcher.Debouncer
-import ca.clinia.vision.helper.locationautocomplete.connectSearcher
+import ca.clinia.vision.helper.location.connectSearcher
 import searcher.MockSearcher
 import searcher.MockSearcherPlaces
 import shouldEqual
 import kotlin.test.Test
 
-class TestLocationAutoCompleteConnectSearcher {
+class TestLocationConnectSearcher {
 
     private val text = "montreal"
     private val debouncer = Debouncer(100)
@@ -19,7 +19,7 @@ class TestLocationAutoCompleteConnectSearcher {
         val searcher = MockSearcher()
         val searcherPlaces = MockSearcherPlaces()
         val viewModel =
-            LocationAutoCompleteViewModel()
+            LocationBoxViewModel()
         val connection = viewModel.connectSearcher(searcher, searcherPlaces, debouncer)
 
         connection.connect()
@@ -34,7 +34,7 @@ class TestLocationAutoCompleteConnectSearcher {
         val searcher = MockSearcher()
         val searcherPlaces = MockSearcherPlaces()
         val viewModel =
-            LocationAutoCompleteViewModel()
+            LocationBoxViewModel()
         val connection = viewModel.connectSearcher(searcher, searcherPlaces, debouncer)
 
         connection.connect()
@@ -49,7 +49,7 @@ class TestLocationAutoCompleteConnectSearcher {
         val searcher = MockSearcher()
         val searcherPlaces = MockSearcherPlaces()
         val viewModel =
-            LocationAutoCompleteViewModel()
+            LocationBoxViewModel()
         val connection = viewModel.connectSearcher(searcher, searcherPlaces, debouncer)
 
         connection.connect()

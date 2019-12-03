@@ -1,14 +1,14 @@
-package ca.clinia.vision.helper.android.locationautocomplete
+package ca.clinia.vision.helper.android.location
 
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.AutoCompleteTextView
 import ca.clinia.vision.core.Callback
-import ca.clinia.vision.core.locationautocomplete.LocationAutoCompleteView
+import ca.clinia.vision.core.location.LocationBoxView
 
-public class LocationAutoCompleteAutoCompleteTextView(
+public class LocationBoxAutoCompleteTextView(
     public val autoCompleteTextView: AutoCompleteTextView
-) : LocationAutoCompleteView {
+) : LocationBoxView {
 
     override var onQueryChanged: Callback<String?>? = null
     override var onLocationSubmitted: Callback<String?>? = null

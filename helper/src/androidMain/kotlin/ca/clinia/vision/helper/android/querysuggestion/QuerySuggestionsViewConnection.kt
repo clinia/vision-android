@@ -13,5 +13,5 @@ public fun <R, T> SearcherQuerySuggestions<R>.connectQuerySuggestionsArrayAdapte
     view: AutoCompleteTextView,
     presenter: Presenter<R, List<T>>
 ): Connection {
-    return QuerySuggestionsArrayAdapterConnection<R, T>(this, adapter, view, presenter)
+    return QuerySuggestionsArrayAdapterConnection(this, adapter, view, presenter)
 }

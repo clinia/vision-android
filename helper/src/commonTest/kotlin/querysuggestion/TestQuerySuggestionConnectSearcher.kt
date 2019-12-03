@@ -9,17 +9,16 @@ import searcher.MockSearcherQuerySuggestions
 import shouldEqual
 import kotlin.test.Test
 
-class TestSearchAutoCompleteConnectSearcher {
+class TestQuerySuggestionConnectSearcher {
 
     private val text = "jean coutu"
     private val debouncer = Debouncer(100)
 
     @Test
-    fun searchPlaces() {
+    fun searchQuerySuggestions() {
         val searcher = MockSearcher()
         val searcherQuerySuggestions = MockSearcherQuerySuggestions()
-        val viewModel =
-            QuerySuggestionViewModel()
+        val viewModel = QuerySuggestionViewModel()
         val connection = viewModel.connectSearcher(searcher, searcherQuerySuggestions, debouncer)
 
         connection.connect()

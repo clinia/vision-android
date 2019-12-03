@@ -1,4 +1,4 @@
-package ca.clinia.vision.helper.android.locationautocomplete
+package ca.clinia.vision.helper.android.location
 
 import android.os.Build
 import android.widget.AutoCompleteTextView

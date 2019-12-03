@@ -1,13 +1,13 @@
-package ca.clinia.vision.core.locationautocomplete
+package ca.clinia.vision.core.location
 
 import ca.clinia.vision.core.Callback
 import ca.clinia.vision.core.Presenter
 import ca.clinia.vision.core.connection.ConnectionImpl
 import ca.clinia.vision.core.searcher.SearcherPlaces
 
-internal data class LocationAutoCompleteSuggestionsConnectionView<R, T>(
+internal data class PlacesConnectionView<R, T>(
     private val searcher: SearcherPlaces<R>,
-    private val view: LocationAutoCompleteSuggestionsView<T>,
+    private val view: PlacesView<T>,
     private val presenter: Presenter<R, List<T>>
 ) : ConnectionImpl() {
 

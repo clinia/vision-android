@@ -1,40 +1,38 @@
-package querysuggestion
+package location
 
 import ca.clinia.vision.core.Callback
-import ca.clinia.vision.core.querysuggestion.QuerySuggestionBoxView
-import ca.clinia.vision.core.querysuggestion.QuerySuggestionViewModel
-import ca.clinia.vision.core.querysuggestion.connectView
+import ca.clinia.vision.core.location.LocationBoxView
+import ca.clinia.vision.core.location.LocationBoxViewModel
+import ca.clinia.vision.core.location.connectView
 import shouldEqual
 import shouldNotBeNull
 import kotlin.test.Test
 
-class TestSearchAutoCompleteConnectView {
+class TestLocationBoxConnectView {
 
     private val text = "text"
 
-    private class MockView :
-        QuerySuggestionBoxView {
+    private class MockView : LocationBoxView {
 
         var string: String? = null
         var queryChanged: String? = null
         var querySubmitted: String? = null
 
-        override fun setText(text: String?) {
+        override fun setText(text: String?, submitLocation: Boolean) {
             string = text
         }
 
         override var onQueryChanged: Callback<String?>? = {
             queryChanged = it
         }
-        override var onQuerySubmitted: Callback<String?>? = {
+        override var onLocationSubmitted: Callback<String?>? = {
             querySubmitted = it
         }
     }
 
     @Test
     fun connectShouldSetItem() {
-        val viewModel =
-            QuerySuggestionViewModel()
+        val viewModel = LocationBoxViewModel()
         val view = MockView()
         val connection = viewModel.connectView(view)
 
@@ -45,8 +43,7 @@ class TestSearchAutoCompleteConnectView {
 
     @Test
     fun onQueryChangedShouldCallSubscription() {
-        val viewModel =
-            QuerySuggestionViewModel()
+        val viewModel = LocationBoxViewModel()
         val view = MockView()
         var expected: String? = null
         val connection = viewModel.connectView(view)
@@ -60,17 +57,16 @@ class TestSearchAutoCompleteConnectView {
     }
 
     @Test
-    fun onQuerySubmittedShouldCallSubscription() {
-        val viewModel =
-            QuerySuggestionViewModel()
+    fun onLocationSubmittedShouldCallSubscription() {
+        val viewModel = LocationBoxViewModel()
         val view = MockView()
         var expected: String? = null
         val connection = viewModel.connectView(view)
 
         viewModel.eventSubmit.subscribe { expected = it }
         connection.connect()
-        view.onQuerySubmitted.shouldNotBeNull()
-        view.onQuerySubmitted!!(text)
+        view.onLocationSubmitted.shouldNotBeNull()
+        view.onLocationSubmitted!!(text)
         viewModel.query.value shouldEqual text
         expected shouldEqual text
     }

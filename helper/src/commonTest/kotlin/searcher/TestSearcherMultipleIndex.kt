@@ -9,7 +9,7 @@ import respondJson
 import shouldFailWith
 import kotlin.test.Test
 
-class TestSearchMultipleIndex {
+class TestSearcherMultipleIndex {
 
     private val client = mockClient(respondJson(ResponseSearches(listOf()), ResponseSearches.serializer()))
     private val indexA = IndexName("indexA")

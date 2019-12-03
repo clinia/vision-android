@@ -1,10 +1,10 @@
-package ca.clinia.vision.core.locationautocomplete
+package ca.clinia.vision.core.location
 
 import ca.clinia.vision.core.connection.ConnectionImpl
 
-internal data class LocationAutoCompleteConnectionView(
-    private val viewModel: LocationAutoCompleteViewModel,
-    private val view: LocationAutoCompleteView
+internal data class LocationBoxConnectionView(
+    private val viewModel: LocationBoxViewModel,
+    private val view: LocationBoxView
 ) : ConnectionImpl() {
 
     override fun connect() {
