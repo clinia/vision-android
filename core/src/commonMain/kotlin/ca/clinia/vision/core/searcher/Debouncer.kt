@@ -22,4 +22,12 @@ public class Debouncer(
     public fun <R> debounce(searcher: Searcher<R>, block: suspend Searcher<R>.() -> Unit) {
         debounce(searcher.coroutineScope) { block(searcher) }
     }
+
+    public fun <R> debounce(searcherPlaces: SearcherPlaces<R>, block: suspend SearcherPlaces<R>.() -> Unit) {
+        debounce(searcherPlaces.coroutineScope) { block(searcherPlaces) }
+    }
+
+    public fun <R> debounce(searcherQuerySuggestions: SearcherQuerySuggestions<R>, block: suspend SearcherQuerySuggestions<R>.() -> Unit) {
+        debounce(searcherQuerySuggestions.coroutineScope) { block(searcherQuerySuggestions) }
+    }
 }

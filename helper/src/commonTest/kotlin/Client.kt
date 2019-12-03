@@ -1,8 +1,12 @@
+import ca.clinia.search.client.ClientPlaces
 import ca.clinia.search.client.ClientSearch
+import ca.clinia.search.configuration.ConfigurationPlaces
 import ca.clinia.search.configuration.ConfigurationSearch
 import ca.clinia.search.model.APIKey
 import ca.clinia.search.model.ApplicationID
+import ca.clinia.search.model.response.ResponseQuerySuggestions
 import ca.clinia.search.model.response.ResponseSearch
+import ca.clinia.search.model.response.ResponseSearchPlaces
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
 import io.ktor.client.features.logging.LogLevel
@@ -44,3 +48,38 @@ fun <T> respondJson(response: T, serializer: KSerializer<T>): HttpResponseData {
         content = ByteReadChannel(responseString)
     )
 }
+
+
+fun mockClientPlaces(
+    response: HttpResponseData = respondSearchPlaces()
+): ClientPlaces {
+    return ClientPlaces(
+        ConfigurationPlaces(
+            ApplicationID("A"),
+            APIKey("B"),
+            engine = MockEngine { response },
+            logLevel = LogLevel.ALL
+        )
+    )
+}
+
+val responseSearchPlaces = ResponseSearchPlaces(suggestions = listOf())
+
+fun respondSearchPlaces(response: ResponseSearchPlaces = responseSearchPlaces) = respondJson(response, ResponseSearchPlaces.serializer())
+
+fun mockClientQuerySuggestions(
+    response: HttpResponseData = respondQuerySuggestions()
+) : ClientSearch {
+    return ClientSearch(
+        ConfigurationSearch(
+            ApplicationID("A"),
+            APIKey("B"),
+            engine = MockEngine { response },
+            logLevel = LogLevel.ALL
+        )
+    )
+}
+
+val responseQuerySuggestions = ResponseQuerySuggestions(suggestions = listOf())
+
+fun respondQuerySuggestions(response: ResponseQuerySuggestions = responseQuerySuggestions) = respondJson(response, ResponseQuerySuggestions.serializer())

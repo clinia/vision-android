@@ -1,6 +1,6 @@
 package ca.clinia.vision.helper.android.searchbox
 
-import android.widget.SearchView
+import androidx.appcompat.widget.SearchView
 import ca.clinia.vision.core.Callback
 import ca.clinia.vision.core.searchbox.SearchBoxView
 

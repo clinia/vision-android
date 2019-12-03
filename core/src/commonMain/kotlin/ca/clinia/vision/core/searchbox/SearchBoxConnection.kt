@@ -4,6 +4,6 @@ import ca.clinia.vision.core.connection.Connection
 
 public fun SearchBoxViewModel.connectView(
     view: SearchBoxView
-): Connection {
+) : Connection {
     return SearchBoxConnectionView(this, view)
 }
