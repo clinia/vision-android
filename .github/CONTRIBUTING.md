@@ -11,7 +11,7 @@ We do not use GitHub issues for general library support.
 
 * Use [github issues](https://github.com/clinia/vision-android/issues) to report a bug.
 * Before creating a new issue:
-  * Make sure you are using the [latest release](https://github.com/algolia/vision-android/releases).
+  * Make sure you are using the [latest release](https://github.com/clinia/vision-android/releases).
   * Check if the issue was [already reported or fixed](https://github.com/clinia/vision-android/issues?utf8=%E2%9C%93&q=is%3Aissue). Notice that it may not be released yet.
   * If you found a match add a brief comment "I have the same problem" or use the action `+1`. This helps prioritize the issues addressing the most common and critical first. If possible add additional information to help us reproduce and fix the issue. Please use your best judgement.
 * Reporting issues:
