@@ -9,7 +9,7 @@ import ca.clinia.vision.core.searcher.Debouncer
 import ca.clinia.vision.core.searcher.Searcher
 import ca.clinia.vision.helper.searchbox.SearchMode
 
-internal data class SearchBoxConnectionSearcherPagedList<R>(
+internal data class     SearchBoxConnectionSearcherPagedList<R>(
     private val viewModel: SearchBoxViewModel,
     private val searcher: Searcher<R>,
     private val pagedList: List<LiveData<out PagedList<out Any>>>,

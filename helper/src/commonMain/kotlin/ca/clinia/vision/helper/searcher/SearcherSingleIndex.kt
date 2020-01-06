@@ -1,7 +1,11 @@
 package ca.clinia.vision.helper.searcher
 
 import ca.clinia.search.client.Index
+import ca.clinia.search.helper.and
 import ca.clinia.search.model.response.ResponseSearch
+import ca.clinia.search.model.response.ResponseSearchPlaces
+import ca.clinia.search.model.search.BoundingBox
+import ca.clinia.search.model.search.Point
 import ca.clinia.search.model.search.Query
 import ca.clinia.search.transport.RequestOptions
 import ca.clinia.vision.core.searcher.Searcher
@@ -28,6 +32,28 @@ public class SearcherSingleIndex(
     override fun setQuery(text: String?) {
         this.query.query = text
     }
+
+    //region GeoSearch
+
+    override fun setLocation(text: String?) {
+        this.query.location = text
+        this.query.insideBoundingBox = null
+        this.query.aroundLatLng = null
+    }
+
+    override fun setInsideBoundingBox(insideBoundingBox: BoundingBox?) {
+        this.query.location = null
+        this.query.insideBoundingBox = insideBoundingBox
+        this.query.aroundLatLng = null
+    }
+
+    override fun setAroundLatLng(aroundLatLng: Point?) {
+        this.query.location = null
+        this.query.insideBoundingBox = null
+        this.query.aroundLatLng = aroundLatLng
+    }
+
+    //endregion
 
     override fun searchAsync(): Job {
         return coroutineScope.launch(exceptionHandler) {

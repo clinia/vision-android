@@ -1,5 +1,6 @@
 import dependency.Library
 import dependency.network.Coroutines
+import dependency.network.CliniaClient
 import dependency.script.AtomicFu
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -42,6 +43,7 @@ kotlin {
             dependencies {
                 api(kotlin("stdlib-common"))
                 api(Coroutines("core-common"))
+                api(CliniaClient("common"))
                 implementation(AtomicFu("common"))
             }
         }
@@ -55,6 +57,7 @@ kotlin {
             dependencies {
                 api(kotlin("stdlib-jdk8"))
                 api(Coroutines("core"))
+                api(CliniaClient("jvm"))
                 implementation(AtomicFu())
             }
         }

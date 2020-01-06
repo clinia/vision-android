@@ -3,6 +3,8 @@ package ca.clinia.vision.helper.searcher
 import ca.clinia.search.client.ClientSearch
 import ca.clinia.search.model.multipleindex.IndexQuery
 import ca.clinia.search.model.response.ResponseSearches
+import ca.clinia.search.model.search.BoundingBox
+import ca.clinia.search.model.search.Point
 import ca.clinia.search.transport.RequestOptions
 import ca.clinia.vision.core.searcher.Searcher
 import ca.clinia.vision.core.searcher.Sequencer
@@ -29,6 +31,34 @@ public class SearcherMultipleIndex(
         queries.forEach { it.query.query = text }
     }
 
+    //region GeoSearch
+
+    override fun setLocation(text: String?) {
+        queries.forEach {
+            it.query.location = text
+            it.query.insideBoundingBox = null
+            it.query.aroundLatLng = null
+        }
+    }
+
+    override fun setInsideBoundingBox(insideBoundingBox: BoundingBox?) {
+        queries.forEach {
+            it.query.location = null
+            it.query.insideBoundingBox = insideBoundingBox
+            it.query.aroundLatLng = null
+        }
+    }
+
+    override fun setAroundLatLng(aroundLatLng: Point?) {
+        queries.forEach {
+            it.query.location = null
+            it.query.insideBoundingBox = null
+            it.query.aroundLatLng = aroundLatLng
+        }
+    }
+
+    //endregion
+
     override fun searchAsync(): Job {
         return coroutineScope.launch(exceptionHandler) {
             isLoading.value = true
@@ -46,4 +76,5 @@ public class SearcherMultipleIndex(
     override fun cancel() {
         sequencer.cancelAll()
     }
+
 }
